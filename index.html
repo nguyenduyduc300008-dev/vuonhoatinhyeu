@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7e8d5">
+    <meta name="description" content="Dạo bước trong khu vườn ba chiều và mở năm tấm thiệp nhỏ dành riêng cho em.">
+    <title>Năm tấm thiệp trong vườn hoa 🌷</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+      :root {
+        color-scheme: light;
+        --ink: #59413c;
+        --muted: #876d66;
+        --rose: #c76172;
+        --paper: #fffaf3;
+        --serif: "Playfair Display", Georgia, serif;
+        --sans: "DM Sans", "Segoe UI", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+        color: var(--ink);
+        background: #f7e8d5;
+        font-family: var(--sans);
+      }
+
+      button { font: inherit; }
+
+      .page {
+        position: relative;
+        display: flex;
+        min-height: 100svh;
+        flex-direction: column;
+        overflow: hidden;
+        isolation: isolate;
+        background:
+          radial-gradient(ellipse at 82% 17%, rgba(255, 246, 200, .88), transparent 25%),
+          linear-gradient(180deg, #f8e6d6 0%, #f8e9dc 47%, #d7ddba 100%);
+      }
+
+      .grain {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        pointer-events: none;
+        opacity: .2;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+      }
+
+      .topbar {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        width: min(1120px, calc(100% - 64px));
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 27px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #765950;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      .brand-flower { color: #bd7180; font-size: 19px; }
+
+      .top-note {
+        color: #91776e;
+        font-size: 12px;
+        letter-spacing: .07em;
+      }
+
+      main {
+        position: relative;
+        display: flex;
+        width: min(1120px, calc(100% - 64px));
+        min-height: 660px;
+        flex: 1;
+        flex-direction: column;
+        margin: 0 auto;
+      }
+
+      .intro {
+        position: relative;
+        z-index: 2;
+        width: min(520px, 57%);
+        padding-top: clamp(35px, 8vh, 85px);
+        padding-left: 5.5%;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin: 0 0 17px;
+        color: #a56d68;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 25px;
+        height: 1px;
+        background: #bd8980;
+        content: "";
+      }
+
+      h1 {
+        max-width: 480px;
+        margin: 0;
+        color: #664a42;
+        font-family: var(--serif);
+        font-size: clamp(42px, 5.3vw, 70px);
+        font-weight: 500;
+        letter-spacing: -.045em;
+        line-height: 1.06;
+      }
+
+      h1 em {
+        color: var(--rose);
+        font-weight: 500;
+      }
+
+      .intro-copy {
+        max-width: 360px;
+        margin: 21px 0 0;
+        color: #876e65;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .garden {
+        position: absolute;
+        inset: 0 -7vw -1px;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .sun {
+        position: absolute;
+        top: 17%;
+        right: 17%;
+        width: clamp(90px, 11vw, 142px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #fff4c8, #f6cc9f);
+        box-shadow: 0 0 72px 24px rgba(255, 230, 177, .33);
+      }
+
+      .cloud {
+        position: absolute;
+        top: 16%;
+        left: 62%;
+        width: 96px;
+        height: 25px;
+        border-radius: 50%;
+        background: rgba(255, 248, 238, .47);
+        filter: blur(1px);
+        animation: cloud-drift 16s ease-in-out infinite alternate;
+      }
+
+      .cloud::before, .cloud::after {
+        position: absolute;
+        bottom: 4px;
+        border-radius: 50%;
+        background: inherit;
+        content: "";
+      }
+
+      .cloud::before { left: 17px; width: 38px; height: 38px; }
+      .cloud::after { left: 43px; width: 30px; height: 30px; }
+
+      .hill {
+        position: absolute;
+        right: -5%;
+        bottom: 14%;
+        left: -5%;
+        height: 39%;
+        border-radius: 50% 50% 0 0 / 18% 21% 0 0;
+        background: linear-gradient(180deg, #cbd4a8 0%, #afc08e 100%);
+        transform: rotate(-2deg);
+      }
+
+      .hill-back {
+        bottom: 25%;
+        left: 38%;
+        height: 32%;
+        border-radius: 50% 50% 0 0 / 22% 25% 0 0;
+        background: #d7d9b4;
+        transform: rotate(4deg);
+      }
+
+      .ground {
+        position: absolute;
+        right: -2%;
+        bottom: -3%;
+        left: -2%;
+        height: 30%;
+        border-radius: 50% 50% 0 0 / 12% 15% 0 0;
+        background: linear-gradient(180deg, #aec08b, #9fb37d);
+      }
+
+      .path {
+        position: absolute;
+        bottom: -12%;
+        left: 42%;
+        width: 31%;
+        height: 42%;
+        border-radius: 50% 50% 0 0 / 48% 48% 0 0;
+        background:
+          repeating-linear-gradient(165deg, transparent 0 37px, rgba(255,255,255,.12) 38px 40px),
+          linear-gradient(180deg, rgba(233, 202, 168, .56), rgba(241, 213, 180, .91));
+        box-shadow: inset 12px 0 20px rgba(255, 255, 255, .16), inset -12px 0 20px rgba(126, 112, 80, .1);
+        transform: rotate(8deg);
+      }
+
+      .tree {
+        position: absolute;
+        right: 6%;
+        bottom: 26%;
+        width: 180px;
+        height: 240px;
+        opacity: .74;
+      }
+
+      .tree-trunk {
+        position: absolute;
+        bottom: 0;
+        left: 47%;
+        width: 23px;
+        height: 124px;
+        border-radius: 12px 12px 3px 3px;
+        background: #9c806d;
+        transform: rotate(-3deg);
+      }
+
+      .tree-trunk::before {
+        position: absolute;
+        top: 8px;
+        left: -40px;
+        width: 62px;
+        height: 17px;
+        border-radius: 20px;
+        background: #9c806d;
+        content: "";
+        transform: rotate(-39deg);
+      }
+
+      .tree-crown {
+        position: absolute;
+        top: 7px;
+        left: 1px;
+        width: 172px;
+        height: 142px;
+        border-radius: 46% 54% 43% 57%;
+        background:
+          radial-gradient(circle at 30% 65%, #edc0b9 0 18%, transparent 19%),
+          radial-gradient(circle at 59% 68%, #f1c8b7 0 17%, transparent 18%),
+          radial-gradient(circle at 76% 43%, #efc3b4 0 20%, transparent 21%),
+          radial-gradient(circle at 41% 34%, #f3cbbd 0 20%, transparent 21%),
+          radial-gradient(circle at 58% 24%, #ecc0b6 0 17%, transparent 18%),
+          radial-gradient(ellipse at 48% 54%, #d9b994 0 54%, transparent 55%);
+        filter: drop-shadow(0 8px 14px rgba(114, 110, 75, .08));
+      }
+
+      .flower-bed {
+        position: absolute;
+        right: 0;
+        bottom: 4%;
+        left: 0;
+        height: 36%;
+      }
+
+      .flower {
+        position: absolute;
+        bottom: var(--bottom);
+        left: var(--left);
+        width: var(--size, 26px);
+        height: calc(var(--size, 26px) * 2.45);
+        transform: rotate(var(--tilt, 0deg));
+        transform-origin: bottom center;
+        animation: sway var(--duration, 4s) ease-in-out infinite alternate;
+        animation-delay: var(--delay, 0s);
+      }
+
+      .flower::before {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        height: 72%;
+        border-radius: 2px;
+        background: #758b5b;
+        content: "";
+      }
+
+      .flower::after {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: var(--size, 26px);
+        height: var(--size, 26px);
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 50% 50%, #bc7956 0 12%, transparent 14%),
+          radial-gradient(ellipse at 50% 12%, var(--petal, #f5e1bc) 0 28%, transparent 30%),
+          radial-gradient(ellipse at 88% 50%, var(--petal, #f5e1bc) 0 28%, transparent 30%),
+          radial-gradient(ellipse at 50% 88%, var(--petal, #f5e1bc) 0 28%, transparent 30%),
+          radial-gradient(ellipse at 12% 50%, var(--petal, #f5e1bc) 0 28%, transparent 30%);
+        content: "";
+        transform: translateX(-50%);
+      }
+
+      .flower i {
+        position: absolute;
+        bottom: 42%;
+        left: 51%;
+        width: 11px;
+        height: 5px;
+        border-radius: 100% 0 100% 0;
+        background: #829462;
+        transform: rotate(-32deg);
+      }
+
+      .flower:nth-child(3n) i { transform: rotate(32deg) scaleX(-1); }
+
+      .cards-scene {
+        position: absolute;
+        z-index: 2;
+        inset: 0;
+        perspective: 900px;
+        perspective-origin: 50% 68%;
+        pointer-events: none;
+      }
+
+      .guide-cursor {
+        position: absolute;
+        z-index: 8;
+        top: 0;
+        left: 0;
+        display: grid;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-7px, -4px);
+        transition: left .85s cubic-bezier(.2, .8, .2, 1), top .85s cubic-bezier(.2, .8, .2, 1), opacity .2s ease;
+      }
+
+      .guide-cursor.is-visible { opacity: 1; }
+
+      .guide-cursor svg {
+        width: 35px;
+        height: 40px;
+        filter: drop-shadow(0 3px 4px rgba(67, 50, 39, .3));
+        transform-origin: 8px 5px;
+      }
+
+      .guide-cursor.is-tapping svg { animation: cursor-tap .55s ease-in-out infinite alternate; }
+
+      .guide-cursor-label {
+        position: absolute;
+        top: -25px;
+        left: 18px;
+        width: max-content;
+        padding: 4px 9px;
+        border: 1px solid rgba(255,255,255,.7);
+        border-radius: 20px;
+        color: #fffaf1;
+        background: #b96774;
+        box-shadow: 0 3px 9px rgba(91, 56, 55, .2);
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .tour-button {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        gap: 8px;
+        padding: 0 16px;
+        border: 1px solid rgba(255, 255, 255, .7);
+        border-radius: 24px;
+        color: #fffaf3;
+        background: #b96774;
+        box-shadow: 0 6px 16px rgba(151, 81, 88, .18);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+        transition: transform .2s ease, background .2s ease;
+      }
+
+      .tour-button:hover { background: #a95462; transform: translateY(-2px); }
+      .tour-button:focus-visible, .close-button:focus-visible, .heart-button:focus-visible {
+        outline: 3px solid #765950;
+        outline-offset: 4px;
+      }
+
+      .tour-hint { margin: 0; color: #806b5e; font-size: 11px; }
+
+      .garden-card {
+        position: absolute;
+        bottom: var(--card-bottom);
+        left: var(--card-left);
+        display: grid;
+        width: clamp(72px, 8vw, 100px);
+        justify-items: center;
+        gap: 5px;
+        padding: 0;
+        border: 0;
+        color: #fffaf1;
+        background: transparent;
+        cursor: pointer;
+        pointer-events: auto;
+        transform: translateX(-50%) scale(var(--card-scale, 1)) rotateY(var(--card-yaw, -8deg));
+        transform-style: preserve-3d;
+        transition: filter .2s ease, transform .25s ease;
+      }
+
+      .garden-card:hover, .garden-card:focus-visible {
+        z-index: 6;
+        filter: brightness(1.05);
+        transform: translateX(-50%) scale(calc(var(--card-scale, 1) * 1.1)) rotateY(0deg) translateZ(14px);
+      }
+
+      .garden-card.is-read .card-seal { background: #79916b; }
+
+      .garden-card:focus-visible {
+        outline: 2px solid #fff9eb;
+        outline-offset: 6px;
+        border-radius: 5px;
+      }
+
+      .card-plinth {
+        position: relative;
+        display: grid;
+        width: 100%;
+        height: clamp(29px, 4vw, 42px);
+        margin-top: 9px;
+        border: 1px solid rgba(255, 255, 255, .66);
+        border-radius: 4px 4px 8px 8px;
+        background: linear-gradient(145deg, #fff5e5 0%, #ecd3b7 65%, #d7b594 100%);
+        box-shadow: 0 10px 0 #b18f72, 0 14px 18px rgba(75, 70, 49, .24), inset 0 2px 3px #fffdf6;
+        transform: rotateX(14deg);
+        transform-style: preserve-3d;
+      }
+
+      .card-plinth::before {
+        position: absolute;
+        top: -25px;
+        right: 7px;
+        left: 7px;
+        height: 28px;
+        border: 1px solid #e8c9ae;
+        border-radius: 3px 3px 0 0;
+        background: linear-gradient(150deg, #fffaf0, #f8eadd 72%, #e8c8ae);
+        box-shadow: inset 0 2px 2px rgba(255,255,255,.9), 0 0 12px rgba(255,241,207,.32);
+        content: "";
+        transform: translateZ(4px);
+      }
+
+      .card-plinth::after {
+        position: absolute;
+        top: -25px;
+        right: 7px;
+        left: 7px;
+        height: 28px;
+        border-radius: 3px 3px 0 0;
+        background: linear-gradient(145deg, transparent 49%, rgba(208, 164, 133, .78) 50%) left / 51% 100% no-repeat,
+                    linear-gradient(215deg, transparent 49%, rgba(208, 164, 133, .58) 50%) right / 51% 100% no-repeat;
+        clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+        content: "";
+        transform: translateZ(5px);
+      }
+
+      .card-seal {
+        position: absolute;
+        z-index: 1;
+        top: -16px;
+        left: 50%;
+        display: grid;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        color: #fff0e8;
+        background: #c8757a;
+        box-shadow: 0 1px 3px rgba(95, 55, 55, .22);
+        font-size: 8px;
+        transform: translateX(-50%);
+        place-items: center;
+      }
+
+      .card-number {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+        display: grid;
+        width: 22px;
+        height: 22px;
+        border: 1px solid rgba(175, 113, 102, .3);
+        border-radius: 50%;
+        color: #9c625c;
+        background: rgba(255, 249, 239, .94);
+        font-family: var(--serif);
+        font-size: 12px;
+        transform: translate(-50%, -39%);
+        place-items: center;
+      }
+
+      .card-label {
+        padding: 3px 8px;
+        border: 1px solid rgba(255,255,255,.32);
+        border-radius: 20px;
+        color: #fffaf1;
+        background: rgba(87, 100, 66, .72);
+        box-shadow: 0 2px 6px rgba(62, 67, 45, .16);
+        font-family: var(--serif);
+        font-size: 10px;
+        white-space: nowrap;
+        text-shadow: 0 1px 2px rgba(0,0,0,.12);
+      }
+
+      .boy {
+        position: absolute;
+        z-index: 4;
+        bottom: 10%;
+        left: 8%;
+        width: 88px;
+        height: 168px;
+        transform-origin: center bottom;
+        transition: left 1.15s cubic-bezier(.2, .8, .2, 1), bottom 1.15s cubic-bezier(.2, .8, .2, 1), transform 1.15s cubic-bezier(.2, .8, .2, 1);
+        pointer-events: none;
+      }
+
+      .boy svg { width: 100%; height: 100%; overflow: visible; }
+      .boy-body { transform-origin: 50px 91px; }
+      .boy.walking .boy-body { animation: bob .38s ease-in-out infinite alternate; }
+      .boy.walking .boy-legs { transform-origin: 49px 132px; animation: legs .26s ease-in-out infinite alternate; }
+      .boy.walking .boy-arm { transform-origin: 57px 93px; animation: arm-swing .3s ease-in-out infinite alternate; }
+      .boy.walking .boy-bouquet { transform-origin: 67px 111px; animation: bouquet-sway .35s ease-in-out infinite alternate; }
+      .boy:not(.walking) .boy-legs, .boy:not(.walking) .boy-arm, .boy:not(.walking) .boy-bouquet { animation: none; }
+
+      .action-area {
+        position: relative;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 25px;
+      }
+
+      .walk-hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border: 1px solid rgba(173, 132, 108, .22);
+        border-radius: 30px;
+        color: #805f55;
+        background: rgba(255, 250, 241, .62);
+        box-shadow: 0 5px 16px rgba(123, 94, 72, .07);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .walk-hint span { color: #bd6976; font-size: 16px; }
+
+      .garden-card:focus-visible {
+        outline: 3px solid #765950;
+        outline-offset: 4px;
+      }
+
+      .hint {
+        margin: 0;
+        color: #7e7560;
+        font-size: 10px;
+        letter-spacing: .07em;
+      }
+
+      footer {
+        position: relative;
+        z-index: 3;
+        width: min(1120px, calc(100% - 64px));
+        margin: 0 auto;
+        padding: 0 0 20px;
+        color: #897a68;
+        font-size: 10px;
+        letter-spacing: .08em;
+        text-align: center;
+      }
+
+      .card-backdrop {
+        position: fixed;
+        z-index: 10;
+        inset: 0;
+        display: grid;
+        padding: 22px;
+        place-items: center;
+        background: rgba(61, 49, 45, .35);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .32s ease;
+        backdrop-filter: blur(7px);
+      }
+
+      .card-backdrop.is-open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .love-card {
+        position: relative;
+        width: min(470px, 100%);
+        padding: clamp(32px, 7vw, 57px);
+        border: 1px solid rgba(174, 135, 105, .3);
+        border-radius: 5px;
+        background:
+          radial-gradient(ellipse at 100% 0%, rgba(242, 217, 198, .4), transparent 36%),
+          var(--paper);
+        box-shadow: 0 28px 90px rgba(54, 38, 33, .25);
+        text-align: center;
+        transform: translateY(18px) scale(.97);
+        transition: transform .42s cubic-bezier(.2, .8, .25, 1);
+      }
+
+      .card-backdrop.is-open .love-card { transform: translateY(0) scale(1); }
+
+      .card-backdrop.is-open .card-stamp {
+        animation: stamp-in .7s cubic-bezier(.17, .89, .32, 1.28) .2s both;
+      }
+
+      .close-button {
+        position: absolute;
+        top: 13px;
+        right: 14px;
+        display: grid;
+        width: 35px;
+        height: 35px;
+        border: 0;
+        border-radius: 50%;
+        color: #8d746b;
+        background: transparent;
+        cursor: pointer;
+        font-size: 22px;
+        place-items: center;
+      }
+
+      .close-button:hover { background: #f3e8dd; }
+
+      .card-stamp {
+        display: grid;
+        width: 51px;
+        height: 51px;
+        margin: 0 auto 20px;
+        border: 1px solid #e8c8bc;
+        border-radius: 50%;
+        color: #bb6875;
+        background: #fff2ec;
+        font-size: 22px;
+        place-items: center;
+      }
+
+      .card-eyebrow {
+        margin: 0 0 12px;
+        color: #a17b6e;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+      }
+
+      .love-card h2 {
+        margin: 0;
+        color: #674b43;
+        font-family: var(--serif);
+        font-size: clamp(32px, 8vw, 43px);
+        font-weight: 500;
+        letter-spacing: -.035em;
+      }
+
+      .card-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 19px 0;
+        color: #c47a7d;
+        font-size: 13px;
+      }
+
+      .card-divider::before, .card-divider::after {
+        width: 37px;
+        height: 1px;
+        background: #e7d4c6;
+        content: "";
+      }
+
+      .letter-copy {
+        margin: 0;
+        color: #76635b;
+        font-size: 14px;
+        line-height: 1.9;
+      }
+
+      .letter-copy + .letter-copy { margin-top: 12px; }
+
+      .signature {
+        margin: 25px 0 0;
+        color: #b16470;
+        font-family: var(--serif);
+        font-size: 20px;
+        font-style: italic;
+      }
+
+      .heart-button {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        gap: 8px;
+        margin-top: 25px;
+        padding: 0 18px;
+        border: 1px solid #e5c7bf;
+        border-radius: 99px;
+        color: #a85967;
+        background: #fff8f1;
+        cursor: pointer;
+        font-size: 12px;
+        transition: background .2s ease, transform .2s ease;
+      }
+
+      .heart-button:hover { background: #fcece6; transform: translateY(-1px); }
+      .heart-button.is-liked { color: #fff; background: #bb6973; }
+      .tour-next {
+        display: inline-flex;
+        min-height: 43px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+        padding: 0 18px;
+        border: 1px solid rgba(255,255,255,.5);
+        border-radius: 99px;
+        color: #fffaf3;
+        background: #b96774;
+        box-shadow: 0 7px 17px rgba(151, 81, 88, .18);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .tour-next:hover { background: #a95462; }
+      .tour-next[hidden] { display: none; }
+
+      .card-count {
+        margin: 17px 0 0;
+        color: #9b7d70;
+        font-size: 10px;
+        letter-spacing: .08em;
+      }
+
+      .floating-heart {
+        position: fixed;
+        z-index: 12;
+        color: #c76172;
+        font-size: 22px;
+        pointer-events: none;
+        animation: float-heart 1.4s ease-out forwards;
+      }
+
+      @keyframes bob { to { transform: translateY(2px); } }
+      @keyframes legs { to { transform: rotate(-7deg); } }
+      @keyframes arm-swing { to { transform: rotate(8deg); } }
+      @keyframes bouquet-sway { to { transform: rotate(8deg); } }
+      @keyframes cursor-tap {
+        from { transform: translateY(0) scale(1); }
+        to { transform: translateY(4px) scale(.93); }
+      }
+      @keyframes sway { to { transform: rotate(calc(var(--tilt, 0deg) + 5deg)); } }
+      @keyframes cloud-drift { to { transform: translateX(28px); } }
+      @keyframes stamp-in {
+        0% { opacity: 0; transform: scale(.2) rotate(-35deg); }
+        70% { opacity: 1; transform: scale(1.13) rotate(8deg); }
+        100% { transform: scale(1) rotate(0); }
+      }
+      @keyframes float-heart {
+        0% { opacity: 0; transform: translate(-50%, 0) scale(.55) rotate(-12deg); }
+        18% { opacity: 1; }
+        100% { opacity: 0; transform: translate(calc(-50% + var(--drift)), -125px) scale(1.3) rotate(16deg); }
+      }
+
+      @media (min-height: 900px) {
+        main { min-height: 760px; }
+      }
+
+      @media (max-width: 700px) {
+        .topbar, main, footer { width: calc(100% - 40px); }
+        .topbar { padding: 21px 0; }
+        .top-note { font-size: 10px; }
+        main { min-height: 720px; }
+        .intro {
+          width: 100%;
+          padding: 48px 0 0 2%;
+        }
+        .action-area { align-items: flex-start; flex-direction: column; }
+        h1 { max-width: 410px; font-size: clamp(45px, 12vw, 64px); }
+        .intro-copy { max-width: 310px; font-size: 13px; }
+        .sun { top: 23%; right: 9%; width: 94px; }
+        .tree { right: -8%; bottom: 27%; transform: scale(.76); transform-origin: bottom right; }
+        .hill { bottom: 13%; height: 34%; }
+        .hill-back { bottom: 23%; left: 25%; height: 30%; }
+        .ground { height: 28%; }
+        .flower-bed { bottom: 3%; height: 31%; }
+        .cards-scene { perspective-origin: 50% 70%; }
+        .garden-card { width: clamp(59px, 16vw, 78px); gap: 4px; }
+        .garden-card:nth-child(1) { --card-left: 40% !important; }
+        .garden-card:nth-child(2) { --card-left: 45% !important; }
+        .garden-card:nth-child(3) { --card-left: 55% !important; }
+        .garden-card:nth-child(4) { --card-left: 73% !important; }
+        .garden-card:nth-child(5) { --card-left: 87% !important; }
+        .card-plinth { height: 29px; }
+        .card-plinth::before, .card-plinth::after { top: -22px; height: 24px; }
+        .card-seal { top: -14px; }
+        .card-label { padding: 3px 5px; font-size: 8px; }
+        .boy { bottom: 8%; left: 8%; width: 76px; height: 148px; }
+        .path { left: 35%; width: 47%; }
+        footer { padding-bottom: 15px; }
+      }
+
+      @media (max-width: 390px) {
+        .topbar, main, footer { width: calc(100% - 32px); }
+        .brand { font-size: 11px; }
+        .top-note { max-width: 110px; text-align: right; }
+        main { min-height: 690px; }
+        .intro { padding-top: 38px; }
+        .garden-card { width: 56px; }
+        .card-label { max-width: 77px; overflow: hidden; text-overflow: ellipsis; }
+        .boy { width: 70px; height: 136px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          animation-duration: .01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: .01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="grain" aria-hidden="true"></div>
+      <header class="topbar">
+        <div class="brand"><span class="brand-flower" aria-hidden="true">✿</span> Vườn nhỏ của chúng mình</div>
+        <div class="top-note">Gửi người mình thương ♡</div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">Một ngày thật dịu dàng</p>
+          <h1 id="page-title">Cùng anh dạo bước <em>giữa vườn hoa.</em></h1>
+          <p class="intro-copy">Năm tấm thiệp nhỏ đang chờ em khám phá. Chạm vào từng tấm, anh sẽ mang đến tận nơi một lời muốn nói.</p>
+          <div class="action-area">
+            <button class="tour-button" id="start-tour" type="button"><span aria-hidden="true">➤</span> Dẫn đường qua 5 tấm thư</button>
+            <p class="tour-hint">Hoặc tự chọn một tấm thiệp trong vườn</p>
+          </div>
+        </section>
+
+        <div class="garden" role="region" aria-label="Khu vườn với năm tấm thiệp">
+          <div class="sun"></div>
+          <div class="cloud"></div>
+          <div class="hill hill-back"></div>
+          <div class="hill"></div>
+          <div class="ground"></div>
+          <div class="path"></div>
+          <div class="tree">
+            <div class="tree-crown"></div>
+            <div class="tree-trunk"></div>
+          </div>
+          <div class="flower-bed">
+            <span class="flower" style="--left:3%;--bottom:10%;--size:22px;--petal:#f3e0bb;--tilt:-8deg;--delay:-1s"></span>
+            <span class="flower" style="--left:10%;--bottom:0%;--size:30px;--petal:#e8a9a7;--tilt:5deg;--delay:-2s"></span>
+            <span class="flower" style="--left:17%;--bottom:16%;--size:20px;--petal:#f4e3c4;--tilt:-3deg;--delay:-.5s"></span>
+            <span class="flower" style="--left:25%;--bottom:-4%;--size:35px;--petal:#f6eee0;--tilt:7deg;--delay:-3s"></span>
+            <span class="flower" style="--left:34%;--bottom:12%;--size:24px;--petal:#e7a5a2;--tilt:-8deg;--delay:-1.6s"></span>
+            <span class="flower" style="--left:42%;--bottom:-2%;--size:30px;--petal:#f4dfb7;--tilt:4deg;--delay:-2.2s"></span>
+            <span class="flower" style="--left:51%;--bottom:16%;--size:21px;--petal:#f6eee0;--tilt:-4deg;--delay:-.8s"></span>
+            <span class="flower" style="--left:61%;--bottom:1%;--size:34px;--petal:#e9a6a4;--tilt:8deg;--delay:-1.9s"></span>
+            <span class="flower" style="--left:70%;--bottom:11%;--size:23px;--petal:#f4e1bc;--tilt:-6deg;--delay:-.3s"></span>
+            <span class="flower" style="--left:79%;--bottom:-3%;--size:32px;--petal:#f6eee0;--tilt:3deg;--delay:-1.3s"></span>
+            <span class="flower" style="--left:88%;--bottom:13%;--size:22px;--petal:#e9a6a4;--tilt:-7deg;--delay:-2.7s"></span>
+            <span class="flower" style="--left:96%;--bottom:0%;--size:31px;--petal:#f4e1bc;--tilt:6deg;--delay:-.9s"></span>
+          </div>
+
+          <div class="cards-scene" role="group" aria-label="Chọn một trong năm tấm thiệp">
+            <button class="garden-card" type="button" data-card="0" style="--card-left:18%;--card-bottom:10%;--card-scale:.82;--card-yaw:10deg;z-index:2" aria-label="Mở tấm thiệp số 1: Điều đầu tiên">
+              <span class="card-plinth"><span class="card-seal" aria-hidden="true">♥</span><span class="card-number" aria-hidden="true">1</span></span>
+              <span class="card-label">Điều đầu tiên</span>
+            </button>
+            <button class="garden-card" type="button" data-card="1" style="--card-left:36%;--card-bottom:23%;--card-scale:.72;--card-yaw:-10deg;z-index:1" aria-label="Mở tấm thiệp số 2: Nụ cười của em">
+              <span class="card-plinth"><span class="card-seal" aria-hidden="true">♥</span><span class="card-number" aria-hidden="true">2</span></span>
+              <span class="card-label">Nụ cười của em</span>
+            </button>
+            <button class="garden-card" type="button" data-card="2" style="--card-left:57%;--card-bottom:13%;--card-scale:.88;--card-yaw:7deg;z-index:3" aria-label="Mở tấm thiệp số 3: Những điều bé xíu">
+              <span class="card-plinth"><span class="card-seal" aria-hidden="true">♥</span><span class="card-number" aria-hidden="true">3</span></span>
+              <span class="card-label">Điều bé xíu</span>
+            </button>
+            <button class="garden-card" type="button" data-card="3" style="--card-left:76%;--card-bottom:27%;--card-scale:.7;--card-yaw:-9deg;z-index:1" aria-label="Mở tấm thiệp số 4: Một lời hứa">
+              <span class="card-plinth"><span class="card-seal" aria-hidden="true">♥</span><span class="card-number" aria-hidden="true">4</span></span>
+              <span class="card-label">Một lời hứa</span>
+            </button>
+            <button class="garden-card" type="button" data-card="4" style="--card-left:91%;--card-bottom:8%;--card-scale:.9;--card-yaw:8deg;z-index:4" aria-label="Mở tấm thiệp số 5: Điều anh muốn nói">
+              <span class="card-plinth"><span class="card-seal" aria-hidden="true">♥</span><span class="card-number" aria-hidden="true">5</span></span>
+              <span class="card-label">Điều anh muốn nói</span>
+            </button>
+            <div class="guide-cursor" id="guide-cursor" aria-hidden="true">
+              <span class="guide-cursor-label">Đi theo mình nhé!</span>
+              <svg viewBox="0 0 36 42" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 3.8c0-1.6 1.1-2.8 2.6-2.8s2.7 1.2 2.7 2.8v14.4-3c0-1.6 1.2-2.8 2.7-2.8s2.7 1.2 2.7 2.8v2-1c0-1.6 1.2-2.8 2.7-2.8s2.7 1.2 2.7 2.8v2-1c0-1.6 1.2-2.8 2.7-2.8s2.7 1.2 2.7 2.8v11.2c0 7.1-4.1 12-10.7 12h-2.4c-4.2 0-6.9-2-9-5.3L1.7 27.3c-.9-1.4-.5-3.1.8-4 1.4-.9 3-.5 4 .8l.5.7V3.8Z" fill="#fffdf8" stroke="#795b4e" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M11 5v13m6-1v1m6-1v1m5-1v1" stroke="#d89591" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="boy" id="boy" aria-hidden="true">
+            <svg viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="49" cy="169" rx="26" ry="5" fill="#75815b" opacity=".24"/>
+              <g class="boy-body">
+                <g class="boy-legs" fill="#536176">
+                  <path d="M37 121h12l-2 36-8 9-9-2 4-9 4-34Z"/>
+                  <path d="M49 121h12l4 34 9 7-2 5H56l-4-9-3-37Z"/>
+                  <path d="M32 162c5 0 9 0 12 3 2 2 2 5-1 6H29c-4 0-5-3-2-6l5-3Zm27 0c5-1 9 1 11 4 2 3 0 5-3 5H54c-3 0-4-3-1-5l6-4Z" fill="#654e49"/>
+                </g>
+                <path d="M34 84c4-5 10-7 17-7 8 0 14 3 18 9l-3 39c-9 7-22 8-34 0l-2-28c0-6 1-10 4-13Z" fill="#849c8a"/>
+                <path d="M40 77c1 7 5 10 11 10 6 0 10-3 11-10l-2-8H42l-2 8Z" fill="#efb99e"/>
+                <path d="M32 46c0-19 8-29 21-29 15 0 23 11 22 29l-4 17c-2 9-9 16-18 16-10 0-17-7-19-16l-2-17Z" fill="#f3c6a9"/>
+                <path d="M32 51c-5-19 0-36 13-42 12-6 28-1 34 10 3 6 3 15 1 22l-5 1-4-12c-8 1-16-2-22-7-2 8-7 12-16 13l-1 15Z" fill="#58433e"/>
+                <path d="M42 54c2-2 5-2 7 0" fill="none" stroke="#674940" stroke-linecap="round" stroke-width="2"/>
+                <path d="M60 54c2-2 5-2 7 0" fill="none" stroke="#674940" stroke-linecap="round" stroke-width="2"/>
+                <circle cx="47" cy="57" r="1.5" fill="#58433e"/>
+                <circle cx="64" cy="57" r="1.5" fill="#58433e"/>
+                <path d="M51 67c3 3 7 3 10 0" fill="none" stroke="#bc7770" stroke-linecap="round" stroke-width="2"/>
+                <g class="boy-arm">
+                  <path d="M64 88c7 0 11 4 14 11l9 15-7 5-13-15-8-4 5-12Z" fill="#f0bd9f"/>
+                  <path d="m76 114 7-4 8 8-5 7-8-4-2-7Z" fill="#f0bd9f"/>
+                </g>
+                <g class="boy-bouquet">
+                  <path d="m84 118 9 22m-13-19 13 19m-8-24 8 24" stroke="#718457" stroke-linecap="round" stroke-width="2"/>
+                  <circle cx="81" cy="115" r="5" fill="#dd9c9b"/>
+                  <circle cx="92" cy="113" r="5" fill="#f2d89e"/>
+                  <circle cx="87" cy="108" r="5" fill="#f4eee0"/>
+                  <circle cx="88" cy="115" r="2" fill="#c38a63"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+      </main>
+
+      <footer>Được viết bằng một chút ngại ngùng và thật nhiều thương mến</footer>
+
+      <div class="card-backdrop" id="card-backdrop" aria-hidden="true">
+        <section class="love-card" role="dialog" aria-modal="true" aria-labelledby="card-title" aria-describedby="card-copy">
+          <button class="close-button" id="close-card" type="button" aria-label="Đóng tấm thiệp">×</button>
+          <div class="card-stamp" aria-hidden="true">♥</div>
+          <p class="card-eyebrow" id="card-eyebrow">Gửi em, người đặc biệt</p>
+          <h2 id="card-title">Anh thích em.</h2>
+          <div class="card-divider" aria-hidden="true">✿</div>
+          <p class="letter-copy" id="card-copy"></p>
+          <p class="letter-copy" id="card-copy-extra"></p>
+          <p class="signature" id="card-signature"></p>
+          <button class="heart-button" id="heart-button" type="button"><span aria-hidden="true">♡</span> Gửi anh một nụ cười</button>
+          <button class="tour-next" id="tour-next" type="button" hidden>Đi đến tấm thư tiếp theo <span aria-hidden="true">→</span></button>
+          <p class="card-count" id="card-count" aria-live="polite"></p>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const boy = document.querySelector("#boy");
+      const gardenCards = [...document.querySelectorAll(".garden-card")];
+      const guideCursor = document.querySelector("#guide-cursor");
+      const backdrop = document.querySelector("#card-backdrop");
+      const closeButton = document.querySelector("#close-card");
+      const heartButton = document.querySelector("#heart-button");
+      const startTourButton = document.querySelector("#start-tour");
+      const tourNextButton = document.querySelector("#tour-next");
+      const cardEyebrow = document.querySelector("#card-eyebrow");
+      const cardTitle = document.querySelector("#card-title");
+      const cardCopy = document.querySelector("#card-copy");
+      const cardCopyExtra = document.querySelector("#card-copy-extra");
+      const cardSignature = document.querySelector("#card-signature");
+      const cardCount = document.querySelector("#card-count");
+      const openedCards = new Set();
+      const messages = [
+        {
+          eyebrow: "Tấm thiệp thứ nhất · Điều đầu tiên",
+          title: "Anh thích em.",
+          copy: "Từ ngày gặp em, những điều bình thường cũng trở nên thật đáng yêu. Anh thích cách em cười, cách em kể chuyện, và cảm giác bình yên mỗi khi ở cạnh em.",
+          extra: "Có lẽ trái tim anh đã biết câu trả lời trước cả khi anh kịp nhận ra.",
+          signature: "Đây là điều đầu tiên anh muốn nói ♡"
+        },
+        {
+          eyebrow: "Tấm thiệp thứ hai · Nụ cười của em",
+          title: "Em làm ngày anh sáng hơn.",
+          copy: "Nụ cười của em giống như nắng ghé qua khu vườn sau một ngày nhiều mây. Chỉ cần nhìn thấy thôi, mọi mệt mỏi trong anh cũng dịu lại.",
+          extra: "Anh mong mình sẽ còn được nghe tiếng em cười thật nhiều lần nữa.",
+          signature: "Tặng em một nụ cười của anh 🌷"
+        },
+        {
+          eyebrow: "Tấm thiệp thứ ba · Những điều bé xíu",
+          title: "Anh nhớ những điều nhỏ.",
+          copy: "Anh nhớ những câu chuyện vụn vặt em kể, món em thích, và cả cách em chăm chú khi nói về điều mình yêu quý.",
+          extra: "Có thể em chẳng để ý, nhưng những điều bé xíu về em lại ở trong anh thật lâu.",
+          signature: "Vì người kể chuyện là em ♡"
+        },
+        {
+          eyebrow: "Tấm thiệp thứ tư · Một lời hứa",
+          title: "Anh sẽ luôn lắng nghe.",
+          copy: "Anh không hứa mình sẽ hoàn hảo. Nhưng anh hứa sẽ chân thành, sẽ lắng nghe, và sẽ ở bên em cả trong những ngày chẳng có gì đặc biệt.",
+          extra: "Mình cứ chậm rãi tìm hiểu nhau, như cùng chăm một khu vườn nhỏ nhé.",
+          signature: "Một lời hứa thật lòng của anh"
+        },
+        {
+          eyebrow: "Tấm thiệp thứ năm · Điều anh muốn nói",
+          title: "Mình tìm hiểu nhau nhé?",
+          copy: "Anh không biết ngày mai sẽ ra sao, chỉ biết hôm nay anh muốn thành thật với trái tim mình: anh muốn được cùng em đi qua thật nhiều khu vườn như thế này.",
+          extra: "Nếu em cũng muốn, anh sẽ rất vui khi được bắt đầu câu chuyện của chúng mình.",
+          signature: "Em cho anh một cơ hội nhé? ♡"
+        }
+      ];
+      let previousFocus;
+      let tourActive = false;
+      let tourIndex = -1;
+
+      function openCard(index) {
+        const message = messages[index];
+        cardEyebrow.textContent = message.eyebrow;
+        cardTitle.textContent = message.title;
+        cardCopy.textContent = message.copy;
+        cardCopyExtra.textContent = message.extra;
+        cardSignature.textContent = message.signature;
+        cardCount.textContent = `Em đã mở ${openedCards.size} / ${messages.length} tấm thiệp`;
+        tourNextButton.hidden = !tourActive;
+        if (tourActive) {
+          tourNextButton.innerHTML = tourIndex === messages.length - 1
+            ? "Kết thúc chuyến dạo vườn <span aria-hidden=\"true\">♡</span>"
+            : "Đi đến tấm thư tiếp theo <span aria-hidden=\"true\">→</span>";
+        }
+        heartButton.classList.remove("is-liked");
+        heartButton.innerHTML = "<span aria-hidden=\"true\">♡</span> Gửi anh một nụ cười";
+        backdrop.classList.add("is-open");
+        backdrop.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeButton.focus();
+      }
+
+      function walkToCard(card, guided = false) {
+        if (boy.classList.contains("walking")) return;
+        const index = Number(card.dataset.card);
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        previousFocus = card;
+        openedCards.add(index);
+        card.classList.add("is-read");
+        const sceneBounds = card.parentElement.getBoundingClientRect();
+        const cardBounds = card.getBoundingClientRect();
+        const x = ((cardBounds.left + cardBounds.width / 2 - sceneBounds.left) / sceneBounds.width) * 100;
+        const bottom = (Number.parseFloat(getComputedStyle(card).bottom) / sceneBounds.height) * 100;
+        const scale = Number.parseFloat(getComputedStyle(card).getPropertyValue("--card-scale")) || 1;
+        if (guided) {
+          guideCursor.style.left = `${x}%`;
+          guideCursor.style.top = `${((cardBounds.top + cardBounds.height * .45 - sceneBounds.top) / sceneBounds.height) * 100}%`;
+          guideCursor.classList.add("is-visible", "is-tapping");
+        } else {
+          guideCursor.classList.remove("is-visible", "is-tapping");
+        }
+        boy.classList.add("walking");
+        const sideOffset = ((cardBounds.width + boy.offsetWidth * scale) / 2 + 10) / sceneBounds.width * 100;
+        boy.style.left = `calc(${Math.max(x - sideOffset, 1)}% - ${boy.offsetWidth / 2}px)`;
+        boy.style.bottom = `${Math.max(bottom - 6, 2)}%`;
+        boy.style.transform = `scale(${Math.max(scale, .78)})`;
+
+        window.setTimeout(() => {
+          boy.classList.remove("walking");
+          guideCursor.classList.remove("is-tapping");
+          openCard(index);
+        }, reducedMotion ? 0 : 1200);
+      }
+
+      function closeCard(keepTour = false) {
+        backdrop.classList.remove("is-open");
+        backdrop.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (!keepTour) {
+          tourActive = false;
+          tourIndex = -1;
+          guideCursor.classList.remove("is-visible", "is-tapping");
+          startTourButton.disabled = false;
+        }
+        if (previousFocus) previousFocus.focus();
+      }
+
+      startTourButton.addEventListener("click", () => {
+        tourActive = true;
+        tourIndex = 0;
+        startTourButton.disabled = true;
+        walkToCard(gardenCards[tourIndex], true);
+      });
+
+      gardenCards.forEach((card) => {
+        card.addEventListener("click", () => walkToCard(card));
+      });
+
+      tourNextButton.addEventListener("click", () => {
+        if (!tourActive) return;
+        if (tourIndex === messages.length - 1) {
+          closeCard();
+          return;
+        }
+        closeCard(true);
+        tourIndex += 1;
+        walkToCard(gardenCards[tourIndex], true);
+      });
+
+      closeButton.addEventListener("click", closeCard);
+      backdrop.addEventListener("click", (event) => {
+        if (event.target === backdrop) closeCard();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && backdrop.classList.contains("is-open")) closeCard();
+      });
+
+      heartButton.addEventListener("click", () => {
+        heartButton.classList.add("is-liked");
+        heartButton.innerHTML = "<span aria-hidden=\"true\">♥</span> Anh nhận được rồi!";
+        const bounds = heartButton.getBoundingClientRect();
+        for (let index = 0; index < 5; index += 1) {
+          const heart = document.createElement("span");
+          heart.className = "floating-heart";
+          heart.setAttribute("aria-hidden", "true");
+          heart.textContent = index % 2 ? "♡" : "♥";
+          heart.style.left = `${bounds.left + bounds.width / 2 + (index - 2) * 18}px`;
+          heart.style.top = `${bounds.top + bounds.height / 2}px`;
+          heart.style.setProperty("--drift", `${(index - 2) * 15}px`);
+          heart.style.animationDelay = `${index * 70}ms`;
+          document.body.append(heart);
+          heart.addEventListener("animationend", () => heart.remove(), { once: true });
+        }
+      });
+    </script>
+  </body>
+</html>
